@@ -11,3 +11,12 @@ services:
     env_file:
       - csvserver.env
 
+  prometheus:
+    image: prom/prometheus:v2.22.0
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    ports:
+      - "9090:9090"
+
